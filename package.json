@@ -1,0 +1,22 @@
+{
+  "name": "dynamics-utilities",
+  "version": "1.0.0",
+  "description": "Various utilities and helpers methods used by Neo-Traffic's Dynamics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neo-Traffic/dynamics-utilities.git"
+  },
+  "author": "Valentin Dufois",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Neo-Traffic/dynamics-utilities/issues"
+  },
+  "homepage": "https://github.com/Neo-Traffic/dynamics-utilities#readme",
+  "dependencies": {
+    "parse-cache-control": "^1.0.1"
+  }
+}

@@ -1,5 +1,5 @@
-exports.supports = require('./supports')
-exports.resolveSupport = require('./resolveSupport')
-exports.isBroadSignPlayer = require('./isBroadSignPlayer')
+exports.supports = require('./src/supports')
+exports.resolveSupport = require('./src/resolveSupport')
+exports.isBroadSignPlayer = require('./src/isBroadSignPlayer')
 
-exports.cache = require('./cache')
+exports.cache = require('./src/cache')

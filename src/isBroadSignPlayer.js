@@ -7,4 +7,4 @@
 
 const isBroadSignPlayer = typeof navigator !== 'undefined' && typeof window.BroadSignObject !== 'undefined'
 
-export default isBroadSignPlayer
+module.exports = isBroadSignPlayer

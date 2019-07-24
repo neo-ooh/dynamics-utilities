@@ -42,15 +42,18 @@ module.exports = function (hint = null, fallbackSupport = supports[0]) {
   // Filter known supports by the given hint
   const hintedSupport = supports.filter(support => support.name === hint)
 
-  // If a support matched, return this one
-  if (hintedSupport.length > 0) {
-    return hintedSupport[0]
-  }
-
   // Get the current screens dimensions
   const [screenWidth, screenHeight] = isBroadSignPlayer ?
     window.BroadSignObject.display_unit_resolution.split('x').map(Number) : // Get dimensions from broadsign
     [window.innerWidth, window.innerHeight] // Get dimensions from the navigator
+
+  // If a support matched, return this one
+  if (hintedSupport.length > 0) {
+    return {
+      scale: screenWidth / hintedSupport[0].width,
+      ...hintedSupport[0]
+    }
+  }
 
   // Calculate the current support aspect ration
   const aspectRatio = screenHeight / screenWidth

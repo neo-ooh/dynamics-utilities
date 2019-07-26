@@ -36,7 +36,7 @@ function get (url) {
       let requestDate = new Date(response.headers.get('Date'))
 
       // Check the response hasn't exceeded its max age
-      if (Date.now() - requestDate.getTime() < maxAge * 1000) {
+      if (Date.now() - requestDate.getTime() > maxAge * 1000) {
         // The request is too old, let's refresh it
         // We do not return the refreshed response as we do not want to slow down the application. We return the existing
         // response even though it is outdated, while it gets refreshed in the background.

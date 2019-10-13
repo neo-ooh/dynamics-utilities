@@ -75,7 +75,10 @@ module.exports = function (hint = null, fallbackSupport = supports[0]) {
 
   // Is there a match ?
   if (matchingSupports.length === 0) {
-    return fallbackSupport // No known support can be associated with this screen, return the fallback supportr
+    return {
+      scale: 1.0,
+      ...fallbackSupport
+    } // No known support can be associated with this screen, return the fallback support
   }
 
   // Return the matching support with the scale difference

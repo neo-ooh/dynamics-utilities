@@ -44,7 +44,7 @@ module.exports = function (hint = null, fallbackSupport = supports[0]) {
 
   // Get the current screens dimensions
   const [screenWidth, screenHeight] = isBroadSignPlayer ?
-    window.BroadSignObject.display_unit_resolution.split('x').map(Number) : // Get dimensions from broadsign
+    window.BroadSignObject.frame_resolution.split('x').map(Number) : // Get dimensions from broadsign
     [window.innerWidth, window.innerHeight] // Get dimensions from the navigator
 
   // If a support matched, return this one

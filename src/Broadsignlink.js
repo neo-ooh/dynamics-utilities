@@ -32,6 +32,8 @@ const stop = '<rc action="stop" regenerate="0" id="1" duration="0" name="" show_
 // const json_now_playing_pass = '{"rc":{"enabled":"0","frame_id":"0","source":"application","id":"1","action":"now_playing","name":"","duration":"0","version":"1","clear":"0","regenerate":"0","show_data":"0", "password":"playerpass"}}'
 // const json_stop_pass = '{"rc": {"version": "1", "action": "stop", "clear": "0", "enabled": "0", "frame_id": "0", "name": "", "id": "1", "source": "application", "duration": "0", "regenerate": "0", "show_data": "0", "password":"playerpass" } }'
 
+const skip = '<rc action="skip_next" id="1" version="1"/>'
+
 function debug (message) {
   let debugTextArea = document.getElementById('debugTextArea')
 
@@ -152,4 +154,9 @@ function stopDisplay () {
   initWebSocket(stop);
 }
 
+function skipDisplay () {
+  initWebSocket(stop);
+}
+
+module.exports.skipDisplay = skipDisplay
 module.exports.stopDisplay = stopDisplay

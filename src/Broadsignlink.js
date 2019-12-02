@@ -2,12 +2,14 @@
 //  BROADSIGN ACTIONS
 //
 
+const isBroadSignPlayer = require('./isBroadSignPlayer')
+
 // Courtesy of BroadSign support
 
 //Commands
 // const show_loop = '<rc regenerate="0" name="" id="1" frame_id="0" source="application" show_data="0" version="1" action="show_loop" clear="0" duration="0" enabled="0"/>'
 // const now_playing = '<rc enabled="0" frame_id="0" source="application" id="1" action="now_playing" name="" duration="0" version="1" clear="0" regenerate="0" show_data="0"/>'
-const stop = '<rc action="stop" regenerate="0" id="1" duration="0" name="" show_data="0" version="1" enabled="0" frame_id="0" source="application" clear="0"/>'
+const stop = '<rc action="stop" regenerate="0" id="1" duration="0" name="" show_data="0" version="1" enabled="0" frame_id="{frame_id}" source="application" clear="0"/>'
 // const cond_list = '<rc source="application" clear="0" version="1" id="1" name="" duration="0" action="condition" list_active="1" show_data="0" enabled="0" regenerate="0" frame_id="0"/>
 // const cond_enable = '<rc duration="0" id="1" name="C1" action="condition" enabled="1" regenerate="0" frame_id="0" show_data="0" clear="0" source="application" version="1"/>'
 // const cond_disable = '<rc frame_id="0" show_data="0" action="condition" version="1" id="1" duration="0" enabled="0" clear="0" name="C1" regenerate="0" source="application"/>'
@@ -32,7 +34,7 @@ const stop = '<rc action="stop" regenerate="0" id="1" duration="0" name="" show_
 // const json_now_playing_pass = '{"rc":{"enabled":"0","frame_id":"0","source":"application","id":"1","action":"now_playing","name":"","duration":"0","version":"1","clear":"0","regenerate":"0","show_data":"0", "password":"playerpass"}}'
 // const json_stop_pass = '{"rc": {"version": "1", "action": "stop", "clear": "0", "enabled": "0", "frame_id": "0", "name": "", "id": "1", "source": "application", "duration": "0", "regenerate": "0", "show_data": "0", "password":"playerpass" } }'
 
-const skip = '<rc action="skip_next" id="1" version="1"/>'
+const skip = '<rc action="skip_next" id="1" version="1" frameID="{frame_id}"/>'
 
 function debug (message) {
   let debugTextArea = document.getElementById('debugTextArea')
@@ -56,7 +58,11 @@ function sendMessage (s1) {
     }
   }
   else {
-    let msg = s1
+    let msg = s1;
+    if(isBroadSignPlayer) {
+      msg = msg.replace('{frame_id}', window.BroadSignObject.frame_id);
+    }
+
     if (websocket != null) {
       websocket.send(msg)
       debug('\nSending:\n' + msg.split('\r\n').join('\\r\\n'))
@@ -155,7 +161,7 @@ function stopDisplay () {
 }
 
 function skipDisplay () {
-  initWebSocket(stop);
+  initWebSocket(skip);
 }
 
 module.exports.skipDisplay = skipDisplay

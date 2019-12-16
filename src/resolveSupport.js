@@ -44,14 +44,15 @@ module.exports = function (hint = null, fallbackSupport = supports[0]) {
 
   // Get the current screens dimensions
   const [screenWidth, screenHeight] = isBroadSignPlayer ?
-    window.BroadSignObject.frame_resolution.split('x').map(Number) : // Get dimensions from broadsign
+    window.BroadSignObject.frame_resolution.split('x').map(Number) : // Get dimensions from BroadSign
     [window.innerWidth, window.innerHeight] // Get dimensions from the navigator
 
   // If a support matched, return this one
   if (hintedSupport.length > 0) {
+    console.log("Hinted support");
     return {
-      scale: screenWidth / hintedSupport[0].width,
-      ...hintedSupport[0]
+      ...hintedSupport[0],
+      scale: screenWidth / hintedSupport[0].width
     }
   }
 
@@ -63,9 +64,9 @@ module.exports = function (hint = null, fallbackSupport = supports[0]) {
 
   // Is there a match ?
   if (perfectSupports.length > 0) {
+    console.log("Perfect match support");
     // There is a perfect match, return it with a scale at 1.0
     return {
-      scale: 1.0,
       ...perfectSupports[0]
     }
   }
@@ -75,15 +76,17 @@ module.exports = function (hint = null, fallbackSupport = supports[0]) {
 
   // Is there a match ?
   if (matchingSupports.length === 0) {
+    console.log("Ratio-matching support");
     return {
-      scale: 1.0,
-      ...fallbackSupport
+      ...fallbackSupport,
+      scale: 1.0
     } // No known support can be associated with this screen, return the fallback support
   }
 
   // Return the matching support with the scale difference
+  console.log("Fallback support");
   return {
-    scale: screenWidth / matchingSupports[0].width,
-    ...matchingSupports[0]
+    ...matchingSupports[0],
+    scale: screenWidth / matchingSupports[0].width
   }
 }

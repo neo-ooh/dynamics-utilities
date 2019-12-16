@@ -3,42 +3,49 @@
     "name": "FCL",
     "width": 3840,
     "height": 1080,
-    "design": "FCL"
+    "design": "FCL",
+    "scale": 1.0
   },
   {
     "name": "DCA",
     "width": 1080,
     "height": 1920,
-    "design": "DCA"
+    "design": "DCA",
+    "scale": 1.0
   },
   {
     "name": "LED",
     "width": 2048,
     "height": 576,
-    "design": "FCL"
+    "design": "FCL",
+    "scale": 0.5333333
   },
   {
     "name": "LED",
     "width": 2176,
     "height": 576,
-    "design": "FCL"
+    "design": "FCL",
+    "scale": 0.503
   },
   {
     "name": "LED",
     "width": 2560,
     "height": 720,
-    "design": "FCL"
+    "design": "FCL",
+    "scale": 0.63
   },
   {
     "name": "WDE",
     "width": 2560,
     "height": 384,
-    "design": "WDE"
+    "design": "WDE",
+    "scale": 1.0
   },
   {
     "name": "SHD",
     "width": 1920,
     "height": 1080,
-    "design": "SHD"
+    "design": "SHD",
+    "scale": 1.0
   }
 ]

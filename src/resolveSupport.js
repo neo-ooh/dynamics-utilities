@@ -50,9 +50,11 @@ module.exports = function (hint = null, fallbackSupport = supports[0]) {
   // If a support matched, return this one
   if (hintedSupport.length > 0) {
     console.log("Hinted support");
+    const ratio = Math.min(screenWidth / hintedSupport[0].width, screenHeight / hintedSupport[0].height);
+
     return {
       ...hintedSupport[0],
-      scale: screenWidth / hintedSupport[0].width
+      scale: ratio
     }
   }
 

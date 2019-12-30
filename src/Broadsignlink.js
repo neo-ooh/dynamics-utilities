@@ -39,6 +39,10 @@ const skip = '<rc action="skip_next" id="1" version="1" frameID="{frame_id}"/>'
 function debug (message) {
   let debugTextArea = document.getElementById('debugTextArea')
 
+  console.log(debugTextArea)
+  if(debugTextArea === null)
+    return;
+
   debugTextArea.value += message + '\n'
   debugTextArea.scrollTop = debugTextArea.scrollHeight
 }

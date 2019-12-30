@@ -1,0 +1,22 @@
+{
+  "FCL": {
+    "name": "FCL",
+    "width": 3840,
+    "height": 1080
+  },
+  "DCA": {
+    "name": "DCA",
+    "width": 1080,
+    "height": 1920
+  },
+  "WDE": {
+    "name": "WDE",
+    "width": 2560,
+    "height": 384
+  },
+  "SHD": {
+    "name": "SHD",
+    "width": 1920,
+    "height": 1080
+  }
+}

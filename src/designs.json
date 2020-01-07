@@ -18,5 +18,15 @@
     "name": "SHD",
     "width": 1920,
     "height": 1080
+  },
+  "PMP": {
+    "name": "PMP",
+    "width": 640,
+    "height": 1080
+  },
+  "PML": {
+    "name": "PMP",
+    "width": 1280,
+    "height": 360
   }
 }

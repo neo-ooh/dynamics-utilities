@@ -5,10 +5,12 @@ const designs = require('./designs')
 module.exports = function(hint = null, fallback = "SHD") {
   const hintedDesign = designs.hasOwnProperty(hint) ? designs[hint] : null
 
+  const resolutionSource = hintedDesign == 'FCL' ? 'display_unit_resolution' : 'frame_resolution';
+
   // Get the current frame dimensions
   const [frameWidth, frameHeight] = isBroadSignPlayer ?
-    window.BroadSignObject.frame_resolution.split('x').map(Number) : // Get dimensions from BroadSign
-    [window.innerWidth, window.innerHeight] // Get dimensions from the navigator
+    window.BroadSignObject[resolutionSource].split('x').map(Number) :  // Get dimensions from BroadSign
+    [window.innerWidth, window.innerHeight]                           // Get dimensions from the navigator
 
   if(hintedDesign != null) {
     console.log("Using hinted design")

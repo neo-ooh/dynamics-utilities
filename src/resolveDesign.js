@@ -5,7 +5,7 @@ const designs = require('./designs')
 module.exports = function(hint = null, fallback = "SHD") {
   const hintedDesign = designs.hasOwnProperty(hint) ? designs[hint] : null
 
-  const resolutionSource = hintedDesign == 'FCL' ? 'display_unit_resolution' : 'frame_resolution';
+  const resolutionSource = hintedDesign != null && hintedDesign.name === 'FCL' ? 'display_unit_resolution' : 'frame_resolution';
 
   // Get the current frame dimensions
   const [frameWidth, frameHeight] = isBroadSignPlayer ?

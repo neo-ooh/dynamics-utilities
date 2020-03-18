@@ -1,5 +1,4 @@
 const isBroadSignPlayer = require('./isBroadSignPlayer')
-const supports = require('./supports')
 const designs = require('./designs')
 
 module.exports = function(hint = null, fallback = "SHD") {

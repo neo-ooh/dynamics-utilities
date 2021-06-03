@@ -91,7 +91,7 @@ function add (url) {
       return response
     }
 
-    // `cache.put` 'consume' the response, we need to clone it before to be able to use it after
+    // `cache.put` 'consumes' the response, we need to clone it before to be able to use it after
     const resp = response.clone()
 
     // Store the newly retrieved response in the cache

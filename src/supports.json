@@ -1,13 +1,13 @@
 [
   {
-    "name": "FCL",
+    "name": "Panoramic",
     "width": 3840,
     "height": 1080,
     "design": "FCL",
     "scale": 1.0
   },
   {
-    "name": "DCA",
+    "name": "Vertical",
     "width": 1080,
     "height": 1920,
     "design": "DCA",
@@ -42,10 +42,10 @@
     "scale": 1.0
   },
   {
-    "name": "SHD",
+    "name": "HD",
     "width": 1920,
     "height": 1080,
-    "design": "SHD",
+    "design": "HD",
     "scale": 1.0
   }
 ]

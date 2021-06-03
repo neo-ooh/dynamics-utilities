@@ -1,9 +1,3 @@
-/*
- *
- *
- * @type {{default?}|boolean}
- */
-
 const isBroadSignPlayer = require('./isBroadSignPlayer')
 const supports = require('./supports')
 
@@ -13,7 +7,7 @@ const supports = require('./supports')
  *  - `name`: The three capital letter name of the support
  *  - `width`: The basic width of this support in pixels
  *  - `height`: The basic height of this support
- *  - `design`: The preffered design to use with this support. This is used for supports using designs from another support
+ *  - `design`: The preferred design to use with this support. This is used for supports using designs from another support
  *  - `scale`: The scaling factor if the current support match the returned support aspect ratio but doesn't have the same dimensions
  *
  *  The returned informations may not match perfectly the current support as it assumes a different screen size, but same aspect

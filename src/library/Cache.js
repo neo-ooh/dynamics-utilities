@@ -13,7 +13,7 @@ class Cache {
    * This method will try to get the requested item from the cache.
    * If it is missing, it will use the `onMiss` callback to get the value, store it, and then return it.
    * @param url
-   * @param {function(): Promise<Response>} onMiss a function returning a `fetch()`, unmodified, response.
+   * @param {function(string): Promise<Response>} onMiss a function returning a `fetch()`, unmodified, response.
    */
   async get(url, onMiss) {
     // Get the cache
@@ -25,7 +25,7 @@ class Cache {
 
     if(!inStore) {
       // Item is not stored, we need to get it and store it.
-      const item = await onMiss()
+      const item = await onMiss(url)
       response = await this.store(url, item);
 
       // Was the request successful ?
@@ -46,7 +46,7 @@ class Cache {
       // The request is too old, let's refresh it
       // We do not return the refreshed response as we do not want to slow down the application. We return the existing
       // response even though it is outdated, while it gets refreshed in the background.
-      this.store(url, await onMiss());
+      this.store(url, await onMiss(url));
     }
 
     return response;

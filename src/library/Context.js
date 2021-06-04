@@ -87,21 +87,9 @@ class Context {
     return null;
   }
 
-  /**
-   * This method provides information on the current context the script is running in. The idea is to abstract most if not all vendor-specific operation/properties from the dynamics themselves.
-   *
-   * This method provides different informations
-   *
-   * @returns {{ player: string }}
-   */
-  getContext() {
-    const ctx = {};
-
-    // First task is to determine the current player we are running in.
-    ctx.player     = this.getPlayer();
-    ctx.resolution = this.getResolution();
-
-  };
+  getParam(param) {
+    return (new URLSearchParams(window.location.search)).get(param);
+  }
 }
 
 module.exports.Context = Context

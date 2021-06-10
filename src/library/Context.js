@@ -57,7 +57,7 @@ class Context {
 
     // We will use the screen resolution to deduce the current support.
     // We check our list of predefined support to find one that matches the current screen dimensions
-    let matchingSupports = supports.filter(s => s.width === width && w.height === height);
+    let matchingSupports = supports.filter(s => s.width === width && s.height === height);
     if(matchingSupports.length > 0) {
       return {
         ...matchingSupports[0]

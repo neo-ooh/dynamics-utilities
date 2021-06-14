@@ -35,7 +35,7 @@ const useFetch = (url, method = 'get', body = null, auth = false) => {
         setIsLoading(false);
       }
 
-      const body     = await responxse.json();
+      const body     = await response.json();
 
       console.log(body);
 

@@ -50,8 +50,6 @@ class Cache {
        */
       const item = await onMiss(url);
 
-      console.log(item)
-
       // Was the request successful ?
       if(!item.ok) {
         // No, just return

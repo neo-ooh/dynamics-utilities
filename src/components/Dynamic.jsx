@@ -12,7 +12,11 @@ import PlayStartListener   from './PlayStartListener';
 const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }) => {
   // Collect all information needed for the dynamic
   const [ isLive, setIsLive ] = React.useState(false);
-  const handleOnDisplay       = React.useCallback(() => setIsLive(true), []);
+  const [ liveStart, setLiveStart ] = React.useState(false);
+  const handleOnDisplay       = React.useCallback((start) => {
+    setIsLive(true);
+    setLiveStart(start);
+  }, []);
 
   const context = React.useMemo(() => new Context(), []);
 
@@ -38,6 +42,7 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
     cache,
     api,
     isLive,
+    liveStart,
     playerType: context.getPlayer(),
     support   : context.getSupport(defaultSupport),
     context,

@@ -28,7 +28,7 @@ const PlayStartListener = ({ onDisplayStart }) => {
   // Call the display start callback on display start
   React.useEffect(() => {
     if(displayStarted) {
-      onDisplayStart();
+      onDisplayStart(Date.now());
     }
   }, [displayStarted])
 

@@ -46,13 +46,14 @@ class Cache {
 
       // Item is not stored, we need to get it and store it.
       const item = await onMiss(url);
-      response   = await this.store(url, item);
 
       // Was the request successful ?
-      if (!response) {
+      if(!item.success) {
         // No, just return
         return response;
       }
+
+      response   = await this.store(url, item);
     } else {
       response = inStore;
     }

@@ -10,28 +10,27 @@
 import i18n                 from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-export default (locales) => {
-  // Initialize i18n
-  return i18n
-    // .use(Backend)
-    .use(initReactI18next)
-    .init({
-      debug: true,
+// Initialize i18n
+i18n
+  // .use(Backend)
+  .use(initReactI18next)
+  .init({
+    debug: true,
 
-      fallbackLng  : 'en',
-      supportedLngs: [ 'en', 'fr' ],
-      resources    : locales,
+    fallbackLng  : 'en',
+    supportedLngs: [ 'en', 'fr' ],
 
-      interpolation: {
-        escapeValue: false, // not needed for react as it escapes by default
-      },
+    interpolation: {
+      escapeValue: false, // not needed for react as it escapes by default
+    },
 
-      defaultNS : 'common',
-      ns        : [ 'common' ],
-      fallbackNS: 'common',
+    defaultNS : 'common',
+    ns        : [ 'common' ],
+    fallbackNS: 'common',
 
-      react: {
-        transSupportBasicHtmlNodes: true,
-      },
-    });
-}
+    react: {
+      transSupportBasicHtmlNodes: true,
+    },
+  });
+
+export default i18n;

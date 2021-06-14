@@ -10,7 +10,7 @@
 import React                               from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import SetTranslationsDefault              from './SetTranslationsDefault';
-import initI18n                            from './i18n';
+import './i18n';
 
 /**
  * The Translation provider takes care of initializing the localization system (i18n) and load locales
@@ -18,7 +18,15 @@ import initI18n                            from './i18n';
  * @constructor
  */
 const TranslationProvider = ({ children, locales }) => {
-  const i18n = React.useMemo(() => initI18n(locales), [locales])
+  const { i18n } = useTranslation();
+
+  React.useEffect(() => {
+    for(const locale in locales) {
+      for(const namespace in locales[locale]) {
+        i18n.addResources(locale, namespace, locales[locale][namespace])
+      }
+    }
+  }, [i18n, locales])
 
   return (
     <I18nextProvider i18n={ i18n }>

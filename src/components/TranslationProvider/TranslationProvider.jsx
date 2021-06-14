@@ -28,8 +28,9 @@ const TranslationProvider = ({ children, locales }) => {
   const { i18n } = useTranslation();
 
   React.useEffect(() => {
+    if(isReady) { return; }
     DateTimeSettings.defaultLocale = i18n.language;
-  }, [ i18n.language ]);
+  }, [ i18n.language, isReady ]);
 
   if(!isReady) {
     return null;

@@ -1,4 +1,5 @@
-import React   from 'react';
+import React          from 'react';
+import useParams      from '../hooks/useParams';
 import DynamicContext from './DynamicContext';
 
 /**
@@ -10,9 +11,9 @@ import DynamicContext from './DynamicContext';
  * @constructor
  */
 const IfParam = ({ name, value, children }) => {
-  const { params } = React.useContext(ctx);
+  const params = useParams()
 
-  if (!params.hasOwnProperty(name) || params[name] !== value) {
+  if (!(name in params) || params[name] !== value) {
     return null;
   }
 

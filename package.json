@@ -14,20 +14,15 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "prepare": "run-s build",
-    "test": "run-s test:unit test:lint test:build",
-    "test:build": "run-s build",
-    "test:lint": "eslint .",
-    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "prepare": "run-s build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "addresser": "^1.1.19",
+    "react": "^16.0.0",
+    "react-i18next": "^11.11.0"
   },
   "devDependencies": {
-    "microbundle-crl": "^0.13.10",
+    "addresser": "^1.1.19",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
@@ -41,13 +36,23 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.11.0",
     "react-scripts": "^3.4.1"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@elastic/apm-rum": "^5.8.0",
+    "i18next": "^20.3.1",
+    "i18next-http-backend": "^1.2.6",
+    "luxon": "^1.27.0",
+    "parse-cache-control": "^1.0.1",
+    "query-string": "^4.3.4"
+  }
 }

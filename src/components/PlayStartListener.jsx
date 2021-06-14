@@ -27,6 +27,8 @@ const PlayStartListener = ({ onDisplayStart }) => {
       onDisplayStart();
     }
   }, [displayStarted])
+
+  return null;
 };
 
 export default PlayStartListener;

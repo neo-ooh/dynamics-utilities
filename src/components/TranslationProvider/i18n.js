@@ -10,9 +10,9 @@
 import i18n                 from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-export default async (locales) => {
+export default (locales) => {
   // Initialize i18n
-  await i18n
+  return i18n
     // .use(Backend)
     .use(initReactI18next)
     .init({

@@ -10,7 +10,8 @@
 import { Settings as DateTimeSettings }    from 'luxon';
 import React                               from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
-import initI18n from './i18n';
+import SetTranslationsDefault              from 'src/components/TranslationProvider/SetTranslationsDefault';
+import initI18n                            from './i18n';
 
 /**
  * The Translation provider takes care of initializing the localization system (i18n) and load locales
@@ -18,26 +19,11 @@ import initI18n from './i18n';
  * @constructor
  */
 const TranslationProvider = ({ children, locales }) => {
-  const [ isReady, setIsReady ] = React.useState(false);
-
-  React.useEffect(() => {
-    initI18n(locales).then(() => setIsReady(true)
-    )
-  }, [locales])
-
-  const { i18n } = useTranslation();
-
-  React.useEffect(() => {
-    if(isReady) { return; }
-    DateTimeSettings.defaultLocale = i18n.language;
-  }, [ i18n.language, isReady ]);
-
-  if(!isReady) {
-    return null;
-  }
+  const i18n = React.useMemo(() => initI18n(locales), [locales])
 
   return (
     <I18nextProvider i18n={ i18n }>
+      <SetTranslationsDefault />
       { children }
     </I18nextProvider>
   );

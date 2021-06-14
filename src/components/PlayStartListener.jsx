@@ -18,7 +18,11 @@ const PlayStartListener = ({ onDisplayStart }) => {
   React.useEffect(() => {
     if(playerType === 'broadsign') {
       document.getElementById('broadsign-holder').addEventListener('click', handleDisplayStart);
+
+      return; // The broadsign holder will send the go live event
     }
+
+    handleDisplayStart()
   })
 
   // Call the display start callback on display start

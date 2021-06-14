@@ -23,7 +23,7 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
   const cache = React.useMemo(() => new Cache(`${ name }-dynamic`), [ name ]);
 
   const api = React.useMemo(() => {
-    if (!apiUrl || !params.hasOwnProperty('key')) {
+    if (!apiUrl || !('key' in params)) {
       return null;
     }
 

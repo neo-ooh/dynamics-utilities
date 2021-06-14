@@ -12,4 +12,4 @@ const IfSupport = ({ name, children}) => {
   return children;
 };
 
-export default IfSupport;r
+export default IfSupport;

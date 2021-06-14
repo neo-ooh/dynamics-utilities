@@ -46,10 +46,10 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
   return (
     <DynamicContext.Provider value={ ctx }>
       <LoggingProvider appName={ ctx.name }>
-        <PlayStartListener onDisplayStart={ handleOnDisplay }/>
         <TranslationProvider locales={ locales }>
           { children }
         </TranslationProvider>
+        <PlayStartListener onDisplayStart={ handleOnDisplay }/>
       </LoggingProvider>
     </DynamicContext.Provider>
   );

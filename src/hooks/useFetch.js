@@ -28,7 +28,13 @@ const useFetch = (url, method = 'get', body = null, auth = false) => {
 
     const fetchCache = async () => {
       const response = await cache.get(request.url, () => fetch(request));
-      const body     = await response.json();
+
+      if(!response) {
+        setResponse(null);
+        setIsLoading(false);
+      }
+
+      const body     = await response.json().content;
 
       console.log(body);
 

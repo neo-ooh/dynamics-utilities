@@ -32,11 +32,7 @@ const TranslationProvider = ({ children, locales }) => {
     DateTimeSettings.defaultLocale = i18n.language;
   }, [ i18n.language ]);
 
-  return (
-    <>
-      { children }
-    </>
-  );
+  return children;
 };
 
 export default TranslationProvider;

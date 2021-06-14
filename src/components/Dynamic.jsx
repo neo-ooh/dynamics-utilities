@@ -41,7 +41,7 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
     playerType: context.getPlayer(),
     support   : context.getSupport(defaultSupport),
     context,
-  }), [ params ]);
+  }), [ params, isLive ]);
 
   return (
     <DynamicContext.Provider value={ ctx }>

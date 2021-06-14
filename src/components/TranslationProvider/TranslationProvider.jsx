@@ -18,8 +18,11 @@ import initI18n from './i18n';
  * @constructor
  */
 const TranslationProvider = ({ children, locales }) => {
+  const [ isReady, setIsReady ] = React.useState(false);
+
   React.useEffect(() => {
-    initI18n(locales)
+    initI18n(locales).then(() => setIsReady(true)
+    )
   }, [locales])
 
   const { i18n } = useTranslation();
@@ -27,6 +30,10 @@ const TranslationProvider = ({ children, locales }) => {
   React.useEffect(() => {
     DateTimeSettings.defaultLocale = i18n.language;
   }, [ i18n.language ]);
+
+  if(!isReady) {
+    return null;
+  }
 
   return (
     <I18nextProvider i18n={ i18n }>

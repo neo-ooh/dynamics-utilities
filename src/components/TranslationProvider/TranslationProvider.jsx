@@ -20,7 +20,7 @@ import initI18n from './i18n';
 const TranslationProvider = ({ children, locales }) => {
   React.useEffect(() => {
     initI18n(locales)
-  })
+  }, [locales])
 
   const { i18n } = useTranslation();
 

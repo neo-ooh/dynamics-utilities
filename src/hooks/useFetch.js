@@ -27,7 +27,7 @@ const useFetch = (url, method = 'get', body = null, auth = false) => {
   React.useEffect(() => {
     cache.get(request.url, () => fetch(request))
          .then(response => {
-           setResponse(response);
+           setResponse(response.json());
            setIsLoading(false);
          });
   }, [ request ]);

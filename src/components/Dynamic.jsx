@@ -56,4 +56,3 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
 };
 
 export default Dynamic;
-export const ctx = DynamicCtx;

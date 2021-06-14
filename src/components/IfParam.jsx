@@ -1,5 +1,5 @@
 import React   from 'react';
-import { ctx } from './Dynamic';
+import DynamicContext from './DynamicContext';
 
 /**
  * Only render the passed children if a parameter with the specified name and value exists.

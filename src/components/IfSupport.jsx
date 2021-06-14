@@ -1,5 +1,5 @@
 import React from 'react';
-import { ctx } from './Dynamic'
+import DynamicContext from './DynamicContext';
 
 const IfSupport = ({ name, children}) => {
 
@@ -12,4 +12,4 @@ const IfSupport = ({ name, children}) => {
   return children;
 };
 
-export default IfSupport;
+export default IfSupport;r

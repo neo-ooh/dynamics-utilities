@@ -18,7 +18,7 @@
   },
   "peerDependencies": {
     "addresser": "^1.1.19",
-    "react": "^16.0.0",
+    "react": "^17.0.2",
     "react-i18next": "^11.11.0"
   },
   "devDependencies": {

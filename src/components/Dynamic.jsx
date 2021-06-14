@@ -17,7 +17,7 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
   const context = React.useMemo(() => new Context(), []);
 
   const params = React.useMemo(() => {
-    queryString.parse(location.search);
+    return queryString.parse(location.search);
   }, [ location.search ]);
 
   const cache = React.useMemo(() => new Cache(`${ name }-dynamic`), [ name ]);

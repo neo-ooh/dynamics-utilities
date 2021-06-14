@@ -7,6 +7,7 @@
  * neo-access - TranslationProvider.jsx
  */
 
+import { Settings as DateTimeSettings }    from 'luxon';
 import React                               from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import SetTranslationsDefault              from './SetTranslationsDefault';
@@ -27,6 +28,10 @@ const TranslationProvider = ({ children, locales }) => {
       }
     }
   }, [i18n, locales])
+
+  React.useEffect(() => {
+    DateTimeSettings.defaultLocale = i18n.language;
+  }, [ i18n.language ]);
 
   return (
     <I18nextProvider i18n={ i18n }>

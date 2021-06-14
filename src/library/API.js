@@ -19,7 +19,7 @@ export default class API {
       const params = new URLSearchParams();
 //
       for(const [key, value] of Object.entries(body)) {
-        console.log(key. value)
+        console.log(key, value)
         if(Array.isArray(value)) {
           value.forEach(v => params.append(key + '[]', v))
         } else {

@@ -28,8 +28,6 @@ const useFetch = (url, method = 'get', body = null, auth = false) => {
     const fetchCache = async () => {
       const response = await cache.get(request.url, () => fetch(request));
 
-      console.log(response)
-
       if(!response) {
         setResponse(null);
         setIsLoading(false);
@@ -37,9 +35,7 @@ const useFetch = (url, method = 'get', body = null, auth = false) => {
 
       const body     = await response.json();
 
-      console.log(body);
-
-      setResponse(body);
+      setResponse(body.content);
       setIsLoading(false);
     };
 

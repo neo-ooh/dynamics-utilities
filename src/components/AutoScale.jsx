@@ -8,7 +8,7 @@ const AutoScale = ({ children }) => {
     display        : 'block',
     position       : 'absolute',
     top            : 0,
-    right          : 0,
+    left          : 0,
     width          : support.width,
     height         : support.height,
     transform      : `scale(${ support.scale })`,

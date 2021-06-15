@@ -79,9 +79,11 @@ class Context {
 
     // No support could be found, do we have a fallback one ?
     if (fallback) {
+      const fallbackSupport = supports.filter(s => s.name === fallback)[0];
+
       return {
-        ...supports.filter(s => s.name === fallback)[0],
-        scale: Math.min(Math.min(width / fallback.width, height / fallback.height)),
+        ...fallbackSupport,
+        scale: Math.min(Math.min(width / fallbackSupport.width, height / fallbackSupport.height)),
       };
     }
 

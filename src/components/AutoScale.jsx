@@ -1,7 +1,7 @@
 import React          from 'react';
 import DynamicContext from './DynamicContext';
 
-const AutoScale = () => {
+const AutoScale = ({ children }) => {
   const { support } = React.useContext(DynamicContext);
 
   const style = React.useMemo(() => ({
@@ -10,7 +10,7 @@ const AutoScale = () => {
 
   return (
     <div style={ style }>
-
+      {  children }
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React          from 'react';
 import DynamicContext from './DynamicContext';
 
+import "./AutoScale.scss"
+
 const AutoScale = ({ children }) => {
   const { support } = React.useContext(DynamicContext);
 

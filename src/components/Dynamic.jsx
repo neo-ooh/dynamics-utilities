@@ -1,19 +1,20 @@
-import TranslationProvider from './TranslationProvider';
 import queryString         from 'query-string';
 import React               from 'react';
 import API                 from '../library/API';
 import Cache               from '../library/Cache';
 import Context             from '../library/Context';
+import AutoScale           from './AutoScale';
 import DynamicContext      from './DynamicContext';
 import LoggingProvider     from './LoggingProvider';
 import PlayStartListener   from './PlayStartListener';
+import TranslationProvider from './TranslationProvider';
 
 
 const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }) => {
   // Collect all information needed for the dynamic
-  const [ isLive, setIsLive ] = React.useState(false);
+  const [ isLive, setIsLive ]       = React.useState(false);
   const [ liveStart, setLiveStart ] = React.useState(false);
-  const handleOnDisplay       = React.useCallback((start) => {
+  const handleOnDisplay             = React.useCallback((start) => {
     setIsLive(true);
     setLiveStart(start);
   }, []);
@@ -44,7 +45,7 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
     isLive,
     liveStart,
     playerType: context.getPlayer(),
-    support   : context.getSupport(params.support || params.design),
+    support   : context.getSupport('HD'),
     context,
   }), [ params, isLive ]);
 
@@ -52,7 +53,9 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
     <DynamicContext.Provider value={ ctx }>
       <LoggingProvider appName={ ctx.name }>
         <TranslationProvider locales={ locales }>
-          { children }
+          <AutoScale>
+            { children }
+          </AutoScale>
         </TranslationProvider>
         <PlayStartListener onDisplayStart={ handleOnDisplay }/>
       </LoggingProvider>

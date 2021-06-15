@@ -1,20 +1,23 @@
 import React          from 'react';
 import DynamicContext from './DynamicContext';
 
-import "./AutoScale.scss"
-
 const AutoScale = ({ children }) => {
   const { support } = React.useContext(DynamicContext);
 
   const style = React.useMemo(() => ({
-    transform: `scale(${ support.scale })`,
-    width: support.width,
-    height: support.height,
-  }), [support]);
+    display        : 'block',
+    position       : 'absolute',
+    top            : 0,
+    right          : 0,
+    width          : support.width,
+    height         : support.height,
+    transform      : `scale(${ support.scale })`,
+    transformOrigin: 'top left',
+  }), [ support ]);
 
   return (
     <div id="dynamic-root" style={ style }>
-      {  children }
+      { children }
     </div>
   );
 };

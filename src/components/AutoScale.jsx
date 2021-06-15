@@ -6,10 +6,12 @@ const AutoScale = ({ children }) => {
 
   const style = React.useMemo(() => ({
     transform: `scale(${ support.scale })`,
+    width: support.width,
+    height: support.height,
   }), [support]);
 
   return (
-    <div style={ style }>
+    <div id="dynamic-root" style={ style }>
       {  children }
     </div>
   );

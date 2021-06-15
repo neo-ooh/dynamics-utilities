@@ -43,7 +43,7 @@ class Context {
 
   getSupport(fallback = null) {
     // Is a design given to us in the URL ?
-    const design        = new URLSearchParams(window.location.search).get('design');
+    const design        = this.getParam('design')
     const hintedSupport = supports.filter(support => support.name === design);
 
     const [ width, height ] = this.getResolution();
@@ -51,7 +51,7 @@ class Context {
     if (hintedSupport.length > 0) {
       // We have a match, return it with scale informations
       return {
-        ...hintedSupport,
+        ...hintedSupport[0],
         scale: Math.min(Math.min(width / hintedSupport[0].width, height / hintedSupport[0].height)),
       };
     }
@@ -80,7 +80,7 @@ class Context {
     // No support could be found, do we have a fallback one ?
     if (fallback) {
       return {
-        ...fallback,
+        ...supports.filter(s => s.name === fallback)[0],
         scale: Math.min(Math.min(width / fallback.width, height / fallback.height)),
       };
     }

@@ -80,7 +80,7 @@ class Context {
     // No support could be found, do we have a fallback one ?
     if (fallback) {
       const fallbackSupport = supports.filter(s => s.name === fallback)[0];
-      console.log(fallback, support, supports.filter(s => s.name === fallback))
+      console.log(fallback, supports, supports.filter(s => s.name === fallback))
 
       return {
         ...fallbackSupport,

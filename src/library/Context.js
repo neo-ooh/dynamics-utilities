@@ -51,7 +51,7 @@ class Context {
     if (hintedSupport.length > 0) {
       // We have a match, return it with scale informations
       return {
-        ...hintedSupport[0],
+        ...hintedSupport,
         scale: Math.min(Math.min(width / hintedSupport[0].width, height / hintedSupport[0].height)),
       };
     }

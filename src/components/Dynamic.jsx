@@ -44,7 +44,7 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
     isLive,
     liveStart,
     playerType: context.getPlayer(),
-    support   : context.getSupport(defaultSupport),
+    support   : context.getSupport(params.support || params.design),
     context,
   }), [ params, isLive ]);
 

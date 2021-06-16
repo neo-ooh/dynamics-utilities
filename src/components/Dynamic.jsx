@@ -10,7 +10,7 @@ import PlayStartListener   from './PlayStartListener';
 import TranslationProvider from './TranslationProvider';
 
 
-const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }) => {
+const Dynamic = ({ env, name, version, apiUrl, children, defaultSupport = null, locales = {} }) => {
   // Collect all information needed for the dynamic
   const [ isLive, setIsLive ]       = React.useState(false);
   const [ liveStart, setLiveStart ] = React.useState(false);
@@ -51,7 +51,7 @@ const Dynamic = ({ name, apiUrl, children, defaultSupport = null, locales = {} }
 
   return (
     <DynamicContext.Provider value={ ctx }>
-      <LoggingProvider appName={ ctx.name }>
+      <LoggingProvider appName={ ctx.name } env={ env } version={ version }>
         <TranslationProvider locales={ locales }>
           <AutoScale>
             { children }

@@ -27,28 +27,26 @@ class Cache {
   /**
    * This method will try to get the requested item from the cache.
    * If it is missing, it will use the `onMiss` callback to get the value, store it, and then return it.
-   * @param url
+   * @param request
    * @param {null|function(string): Promise<Response>} [onMiss] a function returning a `fetch()`, unmodified, response.
    */
-  async get(url, onMiss = () => null) {
+  async get(request) {
     // Get the cache
     const cache = await caches.open(this.cacheName);
 
-    // Get the item in the cache corresponding to the given url
-    const inStore = await cache.match(url);
+    // Get the item in the cache corresponding to the given request
+    const inStore = await cache.match(request, { ignoreVary: true });
+
+    console.log(inStore)
+
     let response;
 
     if (!inStore) {
-      if(!onMiss) {
-        // No callback were given to retrieve the missing item, return undefined.
-        return undefined;
-      }
-
       // Item is not stored, we need to get it and store it.
       /**
        * @type Response
        */
-      const item = await onMiss(url);
+      const item = await fetch(request);
 
       // Was the request successful ?
       if(!item?.ok) {
@@ -56,7 +54,7 @@ class Cache {
         return item;
       }
 
-      response   = await this.store(url, item);
+      response   = await this.store(request, item);
     } else {
       response = inStore;
     }
@@ -70,7 +68,7 @@ class Cache {
       // The request is too old, let's refresh it
       // We do not return the refreshed response as we do not want to slow down the application. We return the existing
       // response even though it is outdated, while it gets refreshed in the background.
-      this.store(url, await onMiss(url));
+      this.store(request, await onMiss(request));
     }
 
     return response;

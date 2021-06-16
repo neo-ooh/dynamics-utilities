@@ -26,7 +26,7 @@ const useFetch = (url, method = 'get', body = null, auth = false) => {
 
   React.useEffect(() => {
     const fetchCache = async () => {
-      const response = await cache.get(request.url, () => fetch(request));
+      const response = await cache.get(request);
 
       if(!response) {
         setResponse(null);

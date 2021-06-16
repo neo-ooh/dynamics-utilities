@@ -1,5 +1,5 @@
-import { DateTime } from 'luxon';
-import parseCacheControl from 'parse-cache-control'
+import { DateTime }      from 'luxon';
+import parseCacheControl from 'parse-cache-control';
 
 class Cache {
   constructor(cacheName) {
@@ -27,8 +27,7 @@ class Cache {
   /**
    * This method will try to get the requested item from the cache.
    * If it is missing, it will use the `onMiss` callback to get the value, store it, and then return it.
-   * @param request
-   * @param {null|function(string): Promise<Response>} [onMiss] a function returning a `fetch()`, unmodified, response.
+   * @param {string|Request} request
    */
   async get(request) {
     // Get the cache
@@ -36,8 +35,6 @@ class Cache {
 
     // Get the item in the cache corresponding to the given request
     const inStore = await cache.match(request, { ignoreVary: true });
-
-    console.log(inStore)
 
     let response;
 
@@ -49,12 +46,12 @@ class Cache {
       const item = await fetch(request);
 
       // Was the request successful ?
-      if(!item?.ok) {
+      if (!item?.ok) {
         // No, just return
         return item;
       }
 
-      response   = await this.store(request, item);
+      response = await this.store(request, item);
     } else {
       response = inStore;
     }

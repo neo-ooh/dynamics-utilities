@@ -30,7 +30,7 @@ class Cache {
    * @param url
    * @param {null|function(string): Promise<Response>} [onMiss] a function returning a `fetch()`, unmodified, response.
    */
-  async get(url, onMiss = null) {
+  async get(url, onMiss = () => null) {
     // Get the cache
     const cache = await caches.open(this.cacheName);
 
@@ -51,7 +51,7 @@ class Cache {
       const item = await onMiss(url);
 
       // Was the request successful ?
-      if(!item.ok) {
+      if(!item?.ok) {
         // No, just return
         return item;
       }

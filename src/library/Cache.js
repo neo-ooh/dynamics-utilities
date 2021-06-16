@@ -108,8 +108,13 @@ class Cache {
     await cache.delete(url);
   }
 
-  async addAll(...args) {
-    return (await this.__getCache()).addAll(args);
+  /**
+   *
+   * @param {(string|URL|Request)[]} requests
+   * @return {Promise<void>}
+   */
+  async addAll(requests) {
+    return (await this.__getCache()).addAll(requests);
   }
 }
 

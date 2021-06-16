@@ -2,6 +2,10 @@ import addresser from 'addresser';
 import supports  from './supports.json';
 
 class Context {
+  /**
+   * Get the type of the player. The player type will either be 'broadsign' or undefined if the player type could not be determined
+   * @return {string|undefined}
+   */
   getPlayer() {
     if (!this.playerType) {
       this.playerType = this.__inferPlayerType();
@@ -16,13 +20,22 @@ class Context {
       return 'broadsign';
     }
 
-    return '';
+    return undefined;
   };
 
+  /**
+   * Tell if the current player is a BroadSign player
+   * @return {boolean}
+   */
   isBroadSignPlayer() {
     return this.getPlayer() === 'broadsign';
   }
 
+  /**
+   * Tell if the current player is a PiSignage player.
+   * @warning This method always return false as of now because there is no reliable way of differentiating a PiSignage player from a basic browser.
+   * @return {boolean}
+   */
   isPiSignagePlayer() {
     return this.getPlayer() === 'pisignage';
   }
@@ -41,6 +54,11 @@ class Context {
     return [ window.innerWidth, window.innerHeight ];
   };
 
+  /**
+   * Retyrb the support details for the current run.
+   * @param fallback The name of a support to return in case no support could be inferred
+   * @return {null|{ name: string, width: number, height: number, design: string, scale: number }}
+   */
   getSupport(fallback = null) {
     // Is a design given to us in the URL ?
     const design        = this.getParam('design')
@@ -90,10 +108,19 @@ class Context {
     return null;
   }
 
+  /**
+   * Convenient method to get a URL paramater.
+   * @param param name of the param in the URI
+   * @return {string|null} The parameter value or null if it doesn't exist
+   */
   getParam(param) {
     return (new URLSearchParams(window.location.search)).get(param);
   }
 
+  /**
+   * Get the components (country, province, city) of the current player location as an array
+   * @return {[string, string, string]} [country, province, city]
+   */
   getLocation() {
     // Start by checking if the country, province and city url parameters are provided. They act as override above all other methods for specifying the location
     const [ country, province, city ] = [ this.getParam('country'), this.getParam('province'), this.getParam('city') ];
@@ -113,6 +140,31 @@ class Context {
     }
 
     throw 'Could not found location data';
+  }
+
+  /**
+   * Provides the latitude and longitude of the current player. If not able to get this information, this function defaults to Winnipeg coordinate as middle ground
+   * @return {{lng: number, lat: number}}
+   */
+  getGeoLocation() {
+    // Try to provide the geolocation of the current player.
+    // Depending on the player type and the current dynamic, different strategy can be used to get the geocode
+
+    if (this.isBroadSignPlayer()) {
+      // Broadsign Provides the player geolocation in its BroadSign object
+      const [lat, lng] = window.BroadSignObject.display_unit_lat_long.split(',');
+      return { lat: Number(lat), lng: Number(lng) }
+    }
+
+    // If not a broadsign player, we will check if there is lat and lng information attached to our url
+    const [lat, lng] = [this.getParam('lat'), this.getParam('lng')];
+
+    if(lat && lng) {
+      return { lat: Number(lat), lng: Number(lng) }
+    }
+
+    // If there wasn't any geocoding information provided in the url, then we default to a location in the center of Canada (Winnipeg)
+    return { lat: 49.895077, lng: -97.138451 };
   }
 }
 

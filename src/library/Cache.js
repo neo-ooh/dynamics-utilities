@@ -28,7 +28,7 @@ class Cache {
    * This method will try to get the requested item from the cache.
    * If it is missing, it will use the `onMiss` callback to get the value, store it, and then return it.
    * @param url
-   * @param {function(string): Promise<Response>} onMiss a function returning a `fetch()`, unmodified, response.
+   * @param {function(string): Promise<Response>} [onMiss] a function returning a `fetch()`, unmodified, response.
    */
   async get(url, onMiss = null) {
     // Get the cache

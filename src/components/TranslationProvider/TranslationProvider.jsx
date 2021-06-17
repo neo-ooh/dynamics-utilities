@@ -21,8 +21,8 @@ const TranslationProvider = ({ children, locales }) => {
   const { i18n } = useTranslation();
 
   React.useEffect(() => {
-    for (const locale in Object.getOwnPropertyNames(locales)) {
-      for (const namespace in Object.getOwnPropertyNames(locales[locale])) {
+    for (const locale in Object.keys(locales)) {
+      for (const namespace in Object.keys(locales[locale])) {
         i18n.addResourceBundle(locale, namespace, locales[locale][namespace]);
       }
     }

@@ -24,7 +24,7 @@ const TranslationProvider = ({ children, locales }) => {
     for (const locale in locales) {
       console.log(locale)
       for (const namespace in Object.keys(locales[locale])) {
-        console.log(locale)
+        console.log(namespace)
         i18n.addResourceBundle(locale, namespace, locales[locale][namespace]);
       }
     }

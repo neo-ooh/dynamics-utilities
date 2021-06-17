@@ -43,7 +43,6 @@ class Cache {
       /**
        * @type Response
        */
-      console.log('fetching')
       const item = await fetch(request);
 
       // Was the request successful ?

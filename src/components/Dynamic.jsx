@@ -2,9 +2,9 @@ import queryString         from 'query-string';
 import React               from 'react';
 import API                 from '../library/API';
 import Cache               from '../library/Cache';
-import Context             from '../library/Context';
-import AutoScale           from './AutoScale';
-import DynamicContext      from './DynamicContext';
+import Context        from '../library/Context';
+import DynamicRoot    from './DynamicRoot';
+import DynamicContext from './DynamicContext';
 import LoggingProvider     from './LoggingProvider';
 import PlayStartListener   from './PlayStartListener';
 import TranslationProvider from './TranslationProvider';
@@ -55,9 +55,9 @@ const Dynamic = ({ env, name, version, apiUrl, children, defaultSupport = null, 
     <DynamicContext.Provider value={ ctx }>
       <LoggingProvider appName={ ctx.name } env={ env } version={ version }>
         <TranslationProvider locales={ locales }>
-          <AutoScale>
+          <DynamicRoot>
             { children }
-          </AutoScale>
+          </DynamicRoot>
         </TranslationProvider>
         <PlayStartListener onDisplayStart={ handleOnDisplay }/>
       </LoggingProvider>

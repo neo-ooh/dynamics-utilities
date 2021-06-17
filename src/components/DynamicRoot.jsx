@@ -1,7 +1,7 @@
 import React          from 'react';
 import DynamicContext from './DynamicContext';
 
-const AutoScale = ({ children }) => {
+const DynamicRoot = ({ children }) => {
   const { support } = React.useContext(DynamicContext);
 
   const style = React.useMemo(() => ({
@@ -16,10 +16,10 @@ const AutoScale = ({ children }) => {
   }), [ support ]);
 
   return (
-    <div id="dynamic-root" style={ style }>
+    <main id="dynamic-root" style={ style }>
       { children }
-    </div>
+    </main>
   );
 };
 
-export default AutoScale;
+export default DynamicRoot;

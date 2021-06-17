@@ -17,6 +17,8 @@ const Dynamic = ({ env, name, version, apiUrl, children, defaultSupport = null, 
   const handleOnDisplay             = React.useCallback((start) => {
     setIsLive(true);
     setLiveStart(start);
+
+    console.log('Display Started');
   }, []);
 
   const context = React.useMemo(() => new Context(), []);

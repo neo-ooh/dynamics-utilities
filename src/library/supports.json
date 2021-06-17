@@ -47,5 +47,12 @@
     "height": 1080,
     "design": "HD",
     "scale": 1.0
+  },
+  {
+    "name": "PML",
+    "width": 1440,
+    "height": 270,
+    "design": "PML",
+    "scale": 1.0
   }
 ]

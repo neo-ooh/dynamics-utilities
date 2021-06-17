@@ -11,7 +11,6 @@ import { init as initApm } from '@elastic/apm-rum';
  * @constructor
  */
 const LoggingProvider = ({ appName, env, version, children }) => {
-  console.log(env, version)
   React.useEffect(() => {
     // Init APM for User Experience Tracking
     initApm({

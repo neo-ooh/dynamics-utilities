@@ -54,5 +54,12 @@
     "height": 270,
     "design": "PML",
     "scale": 1.0
+  },
+  {
+    "name": "PMP",
+    "width": 480,
+    "height": 1080,
+    "design": "PMP",
+    "scale": 1.0
   }
 ]

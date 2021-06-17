@@ -23,7 +23,7 @@ const TranslationProvider = ({ children, locales }) => {
   React.useEffect(() => {
     for (const locale in locales) {
       console.log(locale)
-      for (const namespace in Object.keys(locales[locale])) {
+      for (const namespace in locales[locale]) {
         console.log(namespace)
         i18n.addResourceBundle(locale, namespace, locales[locale][namespace]);
       }

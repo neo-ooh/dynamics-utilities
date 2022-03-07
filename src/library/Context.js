@@ -139,7 +139,9 @@ class Context {
       return [ 'CA', components.stateAbbreviation, components.placeName ];
     }
 
-    throw 'Could not found location data';
+    // No location data could be found, default to Montreal
+    console.warn("Could not find location data. Falling back to Montreal, QC, Canada");
+    return ['CA', 'QC', 'Montreal'];
   }
 
   /**

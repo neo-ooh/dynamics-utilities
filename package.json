@@ -41,7 +41,7 @@
     "@elastic/apm-rum": "^5.8.0",
     "i18next": "^21",
     "i18next-http-backend": "^1.2.6",
-    "luxon": "^2.3.1",
+    "luxon": "^2.5.2",
     "parse-cache-control": "^1.0.1",
     "query-string": "^7.1.1",
     "sass": "^1.35.0"
